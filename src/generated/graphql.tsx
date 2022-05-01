@@ -205,7 +205,7 @@ export type QueryLocationsByIdsArgs = {
 export type GetCharactersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetCharactersQuery = { __typename?: 'Query', characters?: { __typename?: 'Characters', results?: Array<{ __typename?: 'Character', id?: string | null, name?: string | null } | null> | null } | null };
+export type GetCharactersQuery = { __typename?: 'Query', characters?: { __typename?: 'Characters', results?: Array<{ __typename?: 'Character', id?: string | null, name?: string | null, image?: string | null } | null> | null } | null };
 
 
 export const GetCharactersDocument = gql`
@@ -214,6 +214,7 @@ export const GetCharactersDocument = gql`
     results {
       id
       name
+      image
     }
   }
 }

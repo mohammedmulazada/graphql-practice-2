@@ -1,10 +1,11 @@
+import "react-loading-skeleton/dist/skeleton.css";
 import "./App.css";
-import { Characters } from "./components/Characters/Characters";
+import { CharactersContainer } from "./components/Characters/CharactersContainer";
 
 function App() {
   return (
     <div>
-      <Characters />
+      <CharactersContainer />
     </div>
   );
 }

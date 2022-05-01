@@ -1,22 +1,23 @@
-import { useGetCharactersQuery } from "../../generated/graphql";
+import { GetCharactersQuery } from "../../generated/graphql";
+import { Character } from "../Character/Character";
 
-export const Characters = () => {
-  const { data, loading, error } = useGetCharactersQuery();
+type Props = {
+  characters: GetCharactersQuery["characters"];
+};
 
-  if (loading) {
-    return <p>loading</p>;
-  }
+export const Characters = (props: Props) => {
+  const { characters } = props;
 
-  if (error || !data || !data.characters || !data.characters.results) {
+  if (!characters?.results?.length) {
     return null;
   }
 
-  const { results } = data.characters;
-
   return (
     <ul>
-      {results.map((character) => {
-        return !!character && <li key={character.id}>{character.name}</li>;
+      {characters.results.map((character) => {
+        return (
+          !!character && <Character key={character.id} character={character} />
+        );
       })}
     </ul>
   );
