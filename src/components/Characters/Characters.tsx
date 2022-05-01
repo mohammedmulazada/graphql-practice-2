@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { GetCharactersQuery } from "../../generated/graphql";
 import { Character } from "../Character/Character";
 
@@ -15,8 +16,14 @@ export const Characters = (props: Props) => {
   return (
     <ul>
       {characters.results.map((character) => {
+        if (!character) {
+          return null;
+        }
         return (
-          !!character && <Character key={character.id} character={character} />
+          <div key={character.id}>
+            <Character character={character} />
+            <Link to={`/character/${character.id}`}>To {character.name}</Link>
+          </div>
         );
       })}
     </ul>

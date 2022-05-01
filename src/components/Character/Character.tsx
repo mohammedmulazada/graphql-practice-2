@@ -1,11 +1,11 @@
 import { GetCharactersQuery } from "../../generated/graphql";
 
-type Test = NonNullable<GetCharactersQuery["characters"]>;
-type Wep = NonNullable<Test["results"]>;
-type TT = Wep[number];
+type AllCharacterResults = NonNullable<GetCharactersQuery["characters"]>;
+type AllCharacters = NonNullable<AllCharacterResults["results"]>;
+type CharacterType = AllCharacters[number];
 
 type Props = {
-  character: TT;
+  character: CharacterType;
 };
 
 export const Character = (props: Props) => {

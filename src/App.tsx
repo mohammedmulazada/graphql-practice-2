@@ -1,11 +1,19 @@
-import "react-loading-skeleton/dist/skeleton.css";
+import { Link, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { CharactersContainer } from "./components/Characters/CharactersContainer";
+import { CharactersOverview } from "./routes/CharactersOverview";
+import { CharacterDetailPage } from "./routes/CharacterDetailPage";
 
 function App() {
   return (
     <div>
-      <CharactersContainer />
+      <Link to="/">Home</Link>
+      <Routes>
+        <Route path="/" element={<CharactersOverview />} />
+        <Route
+          path="character/:characterId"
+          element={<CharacterDetailPage />}
+        />
+      </Routes>
     </div>
   );
 }
